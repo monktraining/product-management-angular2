@@ -1,29 +1,25 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
+import { ProductService } from  './product.service';
+import { ActivatedRoute } from '@angular/router';
 
-@Component({
-    selector: "pm-list",
+@Component({    
     templateUrl: "product.component.html"
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
+
+    constructor(private _productService:ProductService, 
+    private _router:ActivatedRoute) {
+    }
+    ngOnInit(){
+        let id = this._router.snapshot.params["id"];
+        this._productService.getData().subscribe((data:IProduct[])=>this.products = data);
+    }
+
     imageHeight: number = 64;
     imageWidth: number = 64;
     listFilter: string;
-    products: IProduct[] = [{
-        "Id" : 1,
-        "Name" : "Xbox One",
-        "Description" : "Best entertainment device",
-        "Price" : 200,
-        "Ratings" : 3,
-        "ImageUrl" : "https://openclipart.org/download/252626/xbox1s.svg"
-    },{
-       "Id" : 2,
-        "Name" : "Playstation 4",
-        "Description" : "Best gaming device",
-        "Price" : 300,
-        "Ratings" : 4,
-        "ImageUrl" : "https://openclipart.org/download/26685/PanamaG-Playstation-1.svg" 
-    }];
+    products: IProduct[];
 
     delete(product:IProduct) {        
         console.log(product);

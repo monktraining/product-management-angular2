@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let product of products">
-                    <td>{{product.Name}}</td>
+                    <td><a [routerLink]="['/products/:id',product.id]"></a></td>
                     <td>{{product.Description}}</td>
                     <td>{{product.Price | currency }}</td>
                     <td><img [src]="product.ImageUrl" [style.height.px]="imageHeight" [style.width.px]="imageWidth" /></td>
