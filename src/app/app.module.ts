@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { StarComponent } from './shared/star.component';
 import { RatingComponent } from './ratings/ratings.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { RatingComponent } from './ratings/ratings.component';
     RouterModule.forRoot([
       { path: "home", component: HomeComponent},
       { path: "products", component: ProductComponent },
-      { path: "products/:id", component: ProductComponent }  ,
+      { path: "products/:id", component: ProductDetailComponent }  ,
       { path:"", redirectTo:"home", pathMatch:"full"}    
     ])
   ],

@@ -12,6 +12,7 @@ import { ProductService } from '../product/product.service';
 export class ProductDetailComponent implements OnInit, OnDestroy {
   private sub:Subscription;
   private product: IProduct;
+  private pageTitle:string = "Product Detail";
 
   constructor(private _route:ActivatedRoute, private _router:Router, private _productService:ProductService) { }
 
@@ -19,8 +20,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.sub = this._route.params.subscribe(params => {
       let id = +params["id"];
       this.getProductById(id);
-    })
-
+    });
   }
 
   ngOnDestroy() {
@@ -31,4 +31,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this._productService.getProductById(id).subscribe(_product=>this.product = _product);
   }
 
+  onBack():void{
+    this._router.navigate(["/products"]);
+  }
+
+  onRatingClicked(message: string): void {
+        this.pageTitle = 'Product Detail: ' + message;
+    }
 }

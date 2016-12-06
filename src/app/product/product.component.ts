@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
     imageWidth: number = 64;
     listFilter: string;
     products: IProduct[];
-    title:string;
+    title:string = "Product Management";
 
     delete(product:IProduct) {        
         console.log(product);
