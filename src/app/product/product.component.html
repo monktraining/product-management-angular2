@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Products Management</h3>
+        <h3 class="panel-title">{{title}}</h3>
     </div>
     <div class='panel-body'>     
         <div class='row'>
@@ -26,7 +26,8 @@
                     <td>{{product.Description}}</td>
                     <td>{{product.Price | currency }}</td>
                     <td><img [src]="product.ImageUrl" [style.height.px]="imageHeight" [style.width.px]="imageWidth" /></td>
-                    <td></td>
+                    <td><pm-ratings [rating]="product.Ratings" (ratingsClicked)="onRatingsClicked($event)" ></pm-ratings></td>
+                    <!--<td><ai-star [rating]="product.Ratings" (ratingClicked)="onRatingClicked($event)" ></ai-star></td>-->
                     <td>
                         <a class="btn btn-primary" href="#/products/edit?id={{product.Id}}">Edit</a>
                         <button class="btn btn-danger" (click)="delete(product)">Delete</button>

@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: "product.component.html"
 })
 export class ProductComponent implements OnInit {
-
+    private _id:number;
     constructor(private _productService:ProductService, 
-    private _router:ActivatedRoute) {
+    private _router:ActivatedRoute) {        
     }
     ngOnInit(){
-        let id = this._router.snapshot.params["id"];
+        this._id = this._router.snapshot.params["id"];        
         this._productService.getData().subscribe((data:IProduct[])=>this.products = data);
     }
 
@@ -20,8 +20,17 @@ export class ProductComponent implements OnInit {
     imageWidth: number = 64;
     listFilter: string;
     products: IProduct[];
+    title:string;
 
     delete(product:IProduct) {        
         console.log(product);
+    }
+
+    onRatingClicked(message: string): void {
+        this.title = 'Product List: ' + message;
+    }
+
+    onRatingsClicked(message:string): void {
+        this.title = 'Product List: ' + message;
     }
 }

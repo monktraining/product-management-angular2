@@ -8,12 +8,18 @@ import { AppComponent } from './app.component';
 import  { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home.component';
 import { ProductService } from './product/product.service';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { StarComponent } from './shared/star.component';
+import { RatingComponent } from './ratings/ratings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    HomeComponent    
+    HomeComponent,
+    ProductDetailComponent,
+    StarComponent,
+    RatingComponent    
   ],
   imports: [
     BrowserModule,
@@ -30,3 +36,5 @@ import { ProductService } from './product/product.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
